@@ -20,6 +20,6 @@ class OrderStack:
         order = self.stack.pop()
 
     def view(self):
-        print("Список замовлень:")
+        print("Список усіх замовлень:")
         for order in self.stack:
             print(f"- {order.item} ({order.quantity} одиниць)")
