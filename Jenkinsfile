@@ -46,5 +46,19 @@ pipeline {
                 }
             }
         }
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    // Build Docker image
+                    def DOCKER_IMAGE = 'test_d'
+                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
+
+                    withCredentials([usernamePassword(credentialsId: 'LandPDOCKER', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                    }
+                    sh "docker push ${DOCKER_IMAGE}"
+                }
+            }
+        }
     }
 }
