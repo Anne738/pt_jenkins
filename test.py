@@ -33,6 +33,10 @@ class TestOrderStack(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    import collections.abc
+    import collections
+
+    collections.MutableMapping = collections.abc.MutableMapping
     from xmlrunner import XMLTestRunner
 
     runner = XMLTestRunner(output='test-reports')
