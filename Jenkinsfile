@@ -52,7 +52,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    def DOCKER_IMAGE = 'anne738/my-repo'
+                    def DOCKER_IMAGE = 'anne738/my-repo-for-exam'
                     sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
 
                     withCredentials([usernamePassword(credentialsId: 'LandPDOCKER', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
